@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="point_of_sale.ReceiptScreen" t-inherit="point_of_sale.ReceiptScreen"
+       t-inherit-mode="extension">
+        <xpath expr="//form" position="after">
+            <br/>
+            <form t-on-submit.prevent="onSendWhatsapp" class="d-flex">
+                <div class="input-group" style="font-size: 24px;">
+                    <button class="send btn-primary p-2"
+                            type="submit">Send via Whatsapp
+                        <i class="fa fa-whatsapp" aria-hidden="true"
+                           t-ref="order-whatsapp-receipt-button"/>
+                    </button>
+                </div>
+            </form>
+        </xpath>
+    </t>
+</templates>

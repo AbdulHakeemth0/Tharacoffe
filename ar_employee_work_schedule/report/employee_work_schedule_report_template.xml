@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_employee_work_schedule">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2 class="text-center">Employee Working Schedule</h2>
+                    <br/>
+                    <br/>
+                    <div>
+                        <h3>
+                            <span>Employee Name:</span>
+                            <strong>
+                                <t t-esc="docs.name"/>
+                            </strong>
+                        </h3>
+                    </div>
+                    <div>
+                        <h4>
+                            <span>Working Schedule:</span>
+                            <strong>
+                                <t t-esc="docs.resource_calendar_id.name"/>
+                            </strong>
+                        </h4>
+                    </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Day of Week</th>
+                                <th>Day Period</th>
+                                <th>Work From</th>
+                                <th>Work To</th>
+                                <th>Duration (days)</th>
+                                <th>Week Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="docs.resource_calendar_id.attendance_ids" t-as="attendance_id">
+                                <td>
+                                    <t t-esc="attendance_id.name"/>
+                                </td>
+                                <td>
+<!--                                    <t t-esc="attendance_id.dayofweek"/>-->
+                                    <t t-esc="dict(attendance_id._fields['dayofweek'].selection).get(attendance_id.dayofweek)"/>
+                                </td>
+                                <td>
+                                    <t t-esc="dict(attendance_id._fields['day_period'].selection).get(attendance_id.day_period)"/>
+                                </td>
+                                <td>
+                                    <t t-esc="attendance_id.hour_from"/>
+                                </td>
+                                <td>
+                                    <t t-esc="attendance_id.hour_to"/>
+                                </td>
+                                <td>
+                                    <t t-esc="attendance_id.duration_days"/>
+                                </td>
+                                <td>
+                                    <t t-esc="dict(attendance_id._fields['week_type'].selection).get(attendance_id.week_type)"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

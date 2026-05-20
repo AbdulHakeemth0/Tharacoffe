@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_investor_statement_report" model="ir.actions.report">
+        <field name="name">Investor Statement Report</field>
+        <field name="model">investor.statement.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ar_investor_statement_report.investor_statement_report</field>
+        <field name="report_file">ar_investor_statement_report.investor_statement_report</field>
+        <field name="print_report_name">'Investor Statement Report</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

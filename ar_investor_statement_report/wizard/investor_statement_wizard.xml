@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="investor_statement_wizard_view_form" model="ir.ui.view">
+        <field name="name">investor.statement.wizard.form</field>
+        <field name="model">investor.statement.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Investor Statement">
+                <group class="oe_title">
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                </group>
+                <footer>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button name="generate_investor_statement_report" string="Submit" type="object" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="investor_statement_wizard_action" model="ir.actions.act_window">
+        <field name="name">Investor Statement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">investor.statement.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="investor_statement_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="investor_statement_menu"
+              sequence="40"
+              parent="account.menu_finance_reports"
+              name="Investor Statement" action="investor_statement_wizard_action"/>
+
+</odoo>

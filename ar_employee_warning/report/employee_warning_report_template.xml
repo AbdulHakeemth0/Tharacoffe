@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="employee_warning_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-size:18px;">
+                        <p>
+                            <strong>
+                                <span t-field="o.date"/>
+                            </strong>
+                        </p>
+                        <br/>
+                        <br/>
+
+                        <strong>
+                            <span>To</span>
+                            <br/>
+                        </strong>
+                        <span t-field="o.employee_id.name"/><br/>
+                        <span t-field="o.employee_id.job_id.name"/><br/>
+                        <span t-field="o.employee_id.company_id.name"/><br/>
+                        <span t-field="o.employee_id.private_street"/><br/>
+                        <span t-field="o.employee_id.private_city"/>,
+                        <span t-field="o.employee_id.private_state_id.name"/>,
+                        <span t-field="o.employee_id.private_zip"/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p>Dear Mr. /Ms. /Mrs. <span t-field="o.employee_id.name"/> </p>
+                        <br/>
+                        <span t-field="o.warning_note"/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <p>Sincerely,</p>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

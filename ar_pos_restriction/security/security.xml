@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record model="res.groups" id="group_pos_essentials">
+            <field name="name">POS Essentials</field>
+        </record>
+    </data>
+</odoo>

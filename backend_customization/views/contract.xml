@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.form.inherit.extra.expense</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="after">
+                <button name="print_contract_report" string="Expense Print" type="object" class="btn-primary"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='other']" position="after">
+                <page string="Extra Expense" name="extra_expense">
+                    <field name="extra_expense_ids" widget="one2many_list" mode="tree,form">
+                        <tree editable="bottom" create="1" delete="1" multi_edit="1">
+                            <field name="date"/>
+                            <field name="description"/>
+                            <field name="amount"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="date"/>
+                                <field name="description"/>
+                                <field name="amount"/>
+                            </group>
+                        </form>
+                    </field>
+                   <div style="margin-right:50px;">
+                    <group>
+                        <label for="medical_allowance"/>
+                        <div class="o_row">
+                            <field name="medical_allowance" nolabel="1"/>
+                        </div>
+
+                        <label for="other_allowance"/>
+                        <div class="o_row">
+                            <field name="other_allowance" nolabel="1"/>
+                        </div>
+
+                        <label for="total_allowance"/>
+                        <div class="o_row">
+                            <field name="total_allowance" nolabel="1"/>
+                        </div>
+                    </group>
+                   </div>
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+

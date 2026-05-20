@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Head -->
+    <template id="inherit_web_layout" inherit_id="web.layout">
+        <xpath expr="//head//title" position="replace">
+            <t t-set="odoo_title" t-value="request.env['ir.config_parameter'].sudo().get_param('odoo_debrand.odoo_title')" />
+            <title t-esc="odoo_title" />
+        </xpath>
+        <xpath expr="//head/*[1]" position="before">
+            <t t-set="current_company" t-value="request.env.company" />
+            <t t-set="x_icon" t-value="'/web/image/%s/%s/odoo_favicon' % (current_company._name, current_company.id)" />
+        </xpath>
+    </template>
+    <template id="inherit_discuss_public_channel_template" inherit_id="mail.discuss_public_channel_template">
+        <xpath expr="//head//title" position="replace">
+            <t t-set="odoo_title" t-value="request.env['ir.config_parameter'].sudo().get_param('odoo_debrand.odoo_title')" />
+            <title t-esc="odoo_title" />
+        </xpath>
+    </template>
+    <!-- Manage Database -->
+    <template id="inherit_login_layout" inherit_id="web.login_layout">
+        <xpath expr="//div[@class='text-center small mt-4 pt-3 border-top']" position="replace">
+            <t t-if="not disable_database_manager">
+                <div class="text-center small mt-4 pt-3 border-top d-none" t-if="not disable_footer">
+                    <t t-if="not disable_database_manager">
+                        <a class="pe-2 me-1" href="/web/database/manager">Manage Databases</a>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <!-- Mail Layout -->
+    <template id="inherit_mail_notification_layout" inherit_id="mail.mail_notification_layout">
+        <xpath expr="//div[@style='color: #555555; font-size:11px;']" position="replace">
+        </xpath>
+    </template>
+    <template id="inherit_mail_notification_light" inherit_id="mail.mail_notification_light">
+        <xpath expr="//td[@style='min-width: 590px;']" position="replace">
+        </xpath>
+    </template>
+    <!-- Brand Promo -->
+    <template id="inherited_brand_promotion" inherit_id="web.brand_promotion">
+        <xpath expr="//div[@class='o_brand_promotion']" position="attributes">
+            <attribute name="class">o_brand_promotion d-none</attribute>
+        </xpath>
+    </template>
+    <!-- Digest -->
+    <template id="inherited_digest_mail_main" inherit_id="digest.digest_mail_main">
+        <xpath expr="//div[@class='by_odoo']" position="replace">
+            <div class="by_odoo" style="margin-bottom: 15px;">
+                Sent by <a t-att-href="company.website" target="_blank">
+                    <span class="odoo_link_text"><t t-esc='company.name'/></span></a>
+                <t t-if="unsubscribe_token">
+                    –
+                    <a t-attf-href="/digest/#{object.id}/unsubscribe?token=#{unsubscribe_token}&amp;user_id=#{user.id}" target="_blank" style="text-decoration: none;">
+                        <span style="color: #8f8f8f;">Unsubscribe</span>
+                    </a>
+                </t>
+                <t t-elif="object and object._name == 'digest.digest'">
+                    –
+                    <a t-att-href="'/web#view_type=form&amp;model=digest.digest&amp;id=%s' % object.id" target="_blank" style="text-decoration: none;">
+                        <span style="color: #8f8f8f;">Unsubscribe</span>
+                    </a>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='footer']" position="replace">
+        </xpath>
+    </template>
+    <template id="inherited_digest_section_mobile" inherit_id="digest.digest_section_mobile">
+        <xpath expr="//td[@colspan='3']" position="replace">
+        </xpath>
+    </template>
+    <!-- Reset Password -->
+    <template id="inherited_reset_password_email" inherit_id="auth_signup.reset_password_email">
+        <xpath expr="//td[@valign='top']" position="replace">
+            <td valign="top" style="font-size: 13px;">
+                <div>
+                    Dear <t t-out="object.name or ''">Marc Demo</t>,<br/><br/>
+                    A password reset was requested for the  <t t-out="object.company_id.name or ''"/> account linked to this email.
+                    You may change your password by following this link which will remain valid during 24 hours:<br/>
+                    <div style="margin: 16px 0px 16px 0px;">
+                        <a t-att-href="object.signup_url"
+                            style="background-color: #875A7B; padding: 8px 16px 8px 16px; text-decoration: none; color: #fff; border-radius: 5px; font-size:13px;">
+                            Change password
+                        </a>
+                    </div>
+                    If you do not expect this, you can safely ignore this email.<br/><br/>
+                    Thanks,
+                    <t t-if="user.signature">
+                        <br/>
+                        <t t-out="user.signature">--<br/>Mitchell Admin</t>
+                    </t>
+                </div>
+            </td>
+        </xpath>
+        <xpath expr="//table[@style='min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;']" position="replace">
+        </xpath>
+    </template>
+</odoo>

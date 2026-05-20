@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="employee_work_schedule_wa_employee_form_views" model="ir.ui.view">
+            <field name="name">employee.work.schedule.wa.form.views</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" name="send_message_by_whatsapp" type="object" icon="fa-user"
+                            string="Send Work Schedule"
+                    />
+                </xpath>
+
+                <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                    <group>
+                        <button name="send_message_by_whatsapp" type="object" icon="fa-user"
+                                string="Send Work Schedule"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
+

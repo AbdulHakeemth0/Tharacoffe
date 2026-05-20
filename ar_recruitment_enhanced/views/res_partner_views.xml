@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_agent_views" model="ir.ui.view">
+        <field name="name">res.partner.agent.views</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="is_agent"/>
+            </xpath>
+
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" name="open_agent_applicants" type="object" string="Applicants"
+                        icon="fa-book" invisible="not is_agent">
+                </button>
+                <button class="oe_stat_button" name="open_agent_employees" type="object" string="Employees"
+                        icon="fa-users" invisible="not is_agent">
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

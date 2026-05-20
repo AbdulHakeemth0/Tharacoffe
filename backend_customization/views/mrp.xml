@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherited_mrp_production_form_view" model="ir.ui.view">
+        <field name="name">mrp.production.view.form.inherit</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='lot_producing_id']" position="before">
+                <field name="currency_id" invisible="1"/>
+                <label for="labour_cost" name="labour_cost" />
+                <div class="o_row g-0 d-flex">
+                    <field name="labour_cost" class="oe_inline text-start" readonly="state != 'draft'" />
+                    <label for="labour_cost_price" string="" class="oe_inline" />
+                    <field name="labour_cost_price" invisible="not labour_cost" readonly="state != 'draft'"/>
+                </div>
+            </xpath>
+            <xpath expr="//page[@name='operations']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

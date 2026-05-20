@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="utm_source_agent_views" model="ir.ui.view">
+        <field name="name">utm.source.agent.views</field>
+        <field name="model">utm.source</field>
+        <field name="inherit_id" ref="utm.utm_source_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="is_agent"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

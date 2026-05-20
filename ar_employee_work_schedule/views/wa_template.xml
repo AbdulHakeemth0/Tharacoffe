@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="wa_template_employee_work_schedule" model="ir.ui.view">
+            <field name="name">wa.template.employee.work.schedule</field>
+            <field name="model">wa.template</field>
+            <field name="inherit_id" ref="tus_meta_whatsapp_base.wa_template_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='model_id']" position="after">
+                    <field name="is_employee_schedule_template"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

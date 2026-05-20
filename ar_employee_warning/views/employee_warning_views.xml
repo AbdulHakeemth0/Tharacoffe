@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="employee_warning_form_views" model="ir.ui.view">
+            <field name="name">employee.warning.form</field>
+            <field name="model">employee.warning</field>
+            <field name="arch" type="xml">
+                <form string="Employee Warning">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+<!--                                <field name="warning_template"/>-->
+                                <field name="warning_note"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="employee_warning_tree_views" model="ir.ui.view">
+            <field name="name">employee.warning.tree</field>
+            <field name="model">employee.warning</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Warning">
+                    <field name="employee_id"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_employee_warning">
+            <field name="name">Employee Warning</field>
+            <field name="res_model">employee.warning</field>
+        </record>
+        <menuitem
+                parent="hr.menu_human_resources_configuration"
+                id="menu_employee_warning"
+                action="action_employee_warning"/>
+
+    </data>
+</odoo>
+

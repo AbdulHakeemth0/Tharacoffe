@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherit_external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <xpath expr="//div[@class='o_boxed_header']" position="replace">
+            <div class="o_boxed_header" style="border-bottom:none;">
+                <div class="row mb8" style="page-break-inside: avoid;">
+                    <div class="col-6 text-start mb4" style="margin-top:-8px;">
+                        <div class="mt0 h5" t-if="company.report_header" t-field="company.report_header" style="page-break-inside: avoid;">Company tagline</div>
+                        <div name="company_address" class="mb4" style="font-size:13px; page-break-inside: avoid;">
+                            <ul class="list-unstyled" name="company_address_list">
+                                <li t-if="company.is_company_details_empty"><span t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}">
+                                        <div class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 w-100 opacity-75 text-muted text-center">
+                                            <strong>Company address block</strong>
+                                            <div>Contains the company address.</div>
+                                        </div>
+                                    </span></li>
+                                <li t-else="">
+                                    <span t-field="company.company_details">
+                                        <div class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 w-100 opacity-75 text-muted text-center">
+                                            <strong>Company details block</strong>
+                                            <div>Contains the company details.</div>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li t-if="not forced_vat" />
+                                <li t-else="">
+                                    <t t-esc="company.country_id.vat_label or 'Tax ID'">Tax ID</t>:
+                                    <span t-esc="forced_vat">US12345671</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:210px;max-width:160px;" alt="Logo" />
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="inherit_address_layout" inherit_id="web.address_layout">
+        <xpath expr="//div[@t-if='address']" position="before">
+            <t t-if="o">
+                <t t-if="o._name == 'account.move' and o.inv_type == 'tax_inv'">
+                    <div id="right-elements" class="col-12 d-inline-block"
+                         style="margin-top: -30px; page-break-before: always;">
+                        <table class="table table-sm table-borderless avoid-page-break-inside"
+                               style="border: 1px solid #495057;border-left: none;border-right: none;">
+                            <tr class="border-black o_total">
+                                <th style="font-size:19px;">
+                                    <strong>TAX INVOICE</strong>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+                <t t-if="o._name == 'account.move' and o.inv_type == 'bill_supply'">
+                    <div id="right-elements" class="col-12 d-inline-block"
+                         style="margin-top: -30px; page-break-before: always;">
+                        <table class="table table-sm table-borderless avoid-page-break-inside"
+                               style="border: 1px solid #495057;border-left: none;border-right: none;">
+                            <tr class="border-black o_total">
+                                <th style="font-size:19px;">
+                                    <strong>Bill of Supply</strong>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+
+<!--    <template id="web.address_layout">-->
+<!--        <t t-set="colclass" t-value="('col-sm-5' if report_type == 'html' else 'col-5') + ' ms-auto'" />-->
+<!--        <div t-if="address" class="address row " title="This block is not always present depending on the printed document.">-->
+<!--            <div name="address" class="col-6">-->
+<!--                <div class="col-5">-->
+<!--                <t t-esc="address or None">-->
+<!--                    <div class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 opacity-75 text-muted text-center">-->
+<!--                        <strong>Address block</strong>-->
+<!--                        <div>Usually contains the address of the document's recipient.</div>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--            <t t-if="information_block">-->
+<!--                <t t-set="colclass" t-value="'col-5 offset-1'" />-->
+<!--                <div name="information_block" t-att-class="colclass">-->
+<!--                    <t t-out="information_block or None">-->
+<!--                        <div class="bg-light border-1 rounded h-100 d-flex flex-column align-items-center justify-content-center p-4 opacity-75 text-muted text-center">-->
+<!--                            <strong>Information block</strong>-->
+<!--                            <div>Usually contains a source address or a complementary address.</div>-->
+<!--                        </div>-->
+<!--                    </t>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--        </div>-->
+<!--        <div class="oe_structure" t-else=""></div>-->
+<!--    </template>-->
+</odoo>

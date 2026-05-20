@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="pos_config_restrict_inherit_kanban" model="ir.ui.view">
+            <field name="name">pos.config.restrict.inherit.kanban</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_kanban"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//t[t-name[@kanban-menu]" position="attributes">-->
+                <xpath expr="//t[@t-name='kanban-menu']" position="attributes">
+                    <attribute name="groups">ar_pos_restriction.group_pos_essentials</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <menuitem id="point_of_sale.menu_point_of_sale"
+                  name="Orders"
+                  groups="ar_pos_restriction.group_pos_essentials"
+                  parent="point_of_sale.menu_point_root"
+                  sequence="10"/>
+
+        <menuitem id="point_of_sale.menu_point_rep"
+                  name="Reporting"
+                  parent="point_of_sale.menu_point_root"
+                  groups="ar_pos_restriction.group_pos_essentials"
+                  sequence="90"/>
+
+        <!--            <menuitem-->
+        <!--                id="point_of_sale.menu_pos_session_all"-->
+        <!--                parent="point_of_sale.menu_point_of_sale"-->
+        <!--                action="point_of_sale.action_pos_session"-->
+        <!--                sequence="2"-->
+        <!--                groups="ar_pos_restriction.group_pos_essentials"/>-->
+
+        <!--        <menuitem-->
+        <!--                id="point_of_sale.menu_point_root"-->
+        <!--                name="Point of Sale"-->
+        <!--                groups="!ar_pos_restriction.group_pos_essentials,point_of_sale.group_pos_manager,point_of_sale.group_pos_user"-->
+        <!--                web_icon="point_of_sale,static/description/icon.png"-->
+        <!--                sequence="50"/>-->
+    </data>
+</odoo>
+

@@ -1,0 +1,43 @@
+17.0.1 (initial Release)
+
+
+ ( Date : 27 dec 2023 )
+-----------------------------------
+- dynamic dashboard added
+
+
+ 17.0.2 ( Date : 19 Feb 2024 )
+-----------------------------------
+-[FIX] dashboard issue fixed.
+
+ 17.0.3 ( Date : 29 Feb 2024 )
+-----------------------------------
+-[FIX] when Install module company name changed fixed
+
+17.0.4 ( Date : 19 Mar 2024 )
+-----------------------------------
+-[FIX] Fix issue at ticket create from SO , PO , Invoice .
+
+17.0.5 ( Date : 27 Mar 2024 )
+-----------------------------------
+-[FIX] Update Translation In German Language .
+
+17.0.6 (Date: 4th April 2024)
+------------------------------------
+[FIX] fixed singlton error while opening ticket related to timesheet.
+
+17.0.7 ( Date : 18th April 2024 )
+-----------------------------------
+-[FIX] Update Translation In Polish Language .
+
+17.0.8 ( Date : 25th April 2024 )
+-----------------------------------
+[FIX] Merge ticket issue fix , Customer replied , staff replied issue fix .
+
+17.0.9 ( Date : 26 April 2024 )
+-----------------------------------
+-[FIX] Update Translation In German Language .
+
+17.0.10 ( Date : 10 May 2024 )
+-----------------------------------
+-[FIX] new ticket creation issue fix.

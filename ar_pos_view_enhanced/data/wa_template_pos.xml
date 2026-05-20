@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="pos_invoice_wa_template" model="wa.template">
+            <field name="name">pos_invoice_wa_template</field>
+            <field name="provider_id" ref="tus_meta_whatsapp_base.provider_1"/>
+            <field name="model_id" ref="point_of_sale.model_pos_order"/>
+            <field name="category">utility</field>
+            <field name="template_type">template</field>
+            <field name="language">en</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <div style="margin: 0px; padding: 0px;">
+                        <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                            Hi<t t-out="object.partner_id.name"/>,
+                        </p>
+                        <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                            Here is your Invoice details,
+                        </p>
+                        <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                            Order Ref:<t t-out="object.name"/>,
+                            Order Date:<t t-out="object.date_order"/>,
+                            Total Amount:<t t-out="object.amount_total"/>,
+                        </p>
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

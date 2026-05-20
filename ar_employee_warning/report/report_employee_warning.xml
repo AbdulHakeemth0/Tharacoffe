@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_employee_warning" model="ir.actions.report">
+        <field name="name">Employee Warning Report</field>
+        <field name="model">employee.warning</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">ar_employee_warning.employee_warning_report</field>
+        <field name="report_file">ar_employee_warning.employee_warning_report</field>
+        <field name="print_report_name">'Warning - %s' % (object.employee_id.name)</field>
+        <field name="binding_model_id" ref="ar_employee_warning.model_employee_warning"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="paperformat_employee_warning"/>
+    </record>
+</odoo>

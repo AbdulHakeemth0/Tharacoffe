@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.CashOpeningPopup" t-inherit-mode="extension">
+
+        <xpath expr="//footer" position="inside">
+            <div class="row">
+                <p>
+                    Report Issue
+                </p>
+                <Input tModel="[state, 'opening_cash_comments']"
+                            callback.bind="handleInputChange"
+                            />
+            </div>
+
+            <button class="button btn btn-lg btn-primary"
+                    t-on-click="report_to_higher_authority"
+                    t-att-disabled="!env.utils.isValidFloat(state.openingCash)"
+            >Report To Higher Authority
+                <i class="fa fa-envelope" aria-hidden="true"/>
+            </button>
+
+        </xpath>
+    </t>
+</templates>

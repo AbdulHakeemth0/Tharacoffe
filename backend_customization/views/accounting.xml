@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherited_view_move_form" model="ir.ui.view">
+        <field name="name">account.move.view.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='header_left_group']" position="inside">
+                <field name="inv_type"/>
+                <field name="state_id"/>
+            </xpath>
+            <xpath expr="//group[@id='header_right_group']" position="inside">
+                <field name="date_supply"/>
+                <field name="place_dispatch"/>
+                <field name="transportation_mode"/>
+                <field name="vehicle_no"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
+                <field name="hs_no"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="inherited_view_tax_form" model="ir.ui.view">
+        <field name="name">account.tax.view.form.inherit</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_base_affected']" position="after">
+                <field name="split_tax"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

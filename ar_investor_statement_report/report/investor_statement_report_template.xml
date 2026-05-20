@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="investor_statement_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <!--            <t t-call="ar_investor_statement_report.custom_report_external_layout"/>-->
+                <div class="page">
+                    <h2>Investor Statement Report</h2>
+
+                    <div class="row mt32 mb32">
+                        <div class="col-4">
+                            <p>
+                                <t t-if="date_from">
+                                    <strong>Date from :</strong>
+                                    <span t-esc="date_from"/>
+                                    <br/>
+                                </t>
+                                <t t-if="date_to">
+                                    <strong>Date to :</strong>
+                                    <span t-esc="date_to"/>
+                                </t>
+                            </p>
+                        </div>
+                    </div>
+
+                    <table class="table table-sm table-reports">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Invoice/Bill Reference</th>
+                                <th>Account</th>
+                                <th>References</th>
+                                <th class="text-end">Debit</th>
+                                <th class="text-end">Credit</th>
+                                <th class="text-end">Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="docs" t-as="doc">
+                                <td style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.date"
+                                    />
+                                </td>
+                                <td style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.name"
+                                    />
+                                </td>
+                                <td class="text-end"
+                                    style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.account_id.name"
+                                    />
+                                </td>
+                                <td style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.name"
+                                    />
+                                </td>
+                                <td class="text-end"
+                                    style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.debit"
+                                    />
+                                </td>
+                                <td class="text-end"
+                                    style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.credit"
+                                    />
+                                </td>
+                                <td class="text-end"
+                                    style="white-space: text-nowrap;">
+                                    <span t-att-style="style"
+                                          t-esc="doc.balance"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+    <!--    <template id="custom_report_external_layout">-->
+    <!--        <t t-set="company" t-value="company"/>-->
+    <!--        <div class="header">-->
+    <!--            <div style="border-top: 1px solid black;">-->
+    <!--                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Company Logo"-->
+    <!--                     class="float-left"/>-->
+    <!--                <div style="font-size:14px;text-align:right;" class="float-right">-->
+    <!--                    <div>-->
+    <!--                        <strong t-field="company.partner_id.name"/>-->
+    <!--                        <span t-field="company.partner_id"-->
+    <!--                              t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>-->
+    <!--                        <span t-field="company.partner_id.website"/>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--        <div class="footer">-->
+    <!--            <div class="text-center" style="border-top: 1px solid black;">-->
+    <!--                <ul class="list-inline">-->
+    <!--                    <li t-if="company.phone">E-mail:-->
+    <!--                        <span t-field="company.email"/>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </template>-->
+
+</odoo>
